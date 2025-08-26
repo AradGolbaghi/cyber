@@ -1,13 +1,12 @@
-
 ```
-# 🔐 CYBER — Hacker-Life Lab
+# ​ CYBER — Hacker-Life Lab
 
-> A Python toolkit for recon, network scanning/sniffing, HTTP/OSINT helpers, PDF + image forensics, QR/EXIF tools, token analyzers, and more — with a colorful interactive TUI.  
-> Cross-platform: **Linux, macOS, Windows**.
+> A Python toolkit for recon, network scanning/sniffing, HTTP/OSINT helpers, PDF + image forensics, QR/EXIF tools, token analyzers, and more.  
+> **Cross-platform**: Linux, macOS, Windows.
 
 ---
 
-## 📂 Project Layout
+##  Project Layout
 
 ```
 
@@ -25,39 +24,37 @@ CYBER/
 
 ---
 
-## ✨ What it can do
+##  Features & Capabilities
 
 **Networking & Recon**
-- Async **Port Scanner + Banner** grabber, **HTTP Enumerator**, **robots.txt + sitemap**, **Traceroute** (Scapy), **ARP scan**, **CIDR /24 sweep**, **Bulk ping sweep**, **Public IP + Geo** lookup. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
+- Port scanner with banner grabber, HTTP enumeration, robots.txt + sitemap fetcher, traceroute (Scapy), ARP scan, /24 CIDR sweep, bulk ping sweep, public IP + geolocation lookup.
 
-**Packets & PCAP**
-- **Packet Sniffer** stats (SYN/DNS), **PCAP → IOC** (extract URLs/Hosts). :contentReference[oaicite:2]{index=2}
+**Packet Capture & PCAP**
+- Packet sniffer stats (SYN/DNS) and PCAP parsing to extract IOCs (URLs/hosts).
 
-**HTTP / App security**
-- **HTTP Fuzzer** (simple heuristic findings), **Security Headers audit**, **Dir brute-force**, **URL unshorten (redirect chain)**. :contentReference[oaicite:3]{index=3} :contentReference[oaicite:4]{index=4}
+**HTTP / Security Tools**
+- HTTP fuzzer, security header audit, directory brute-forcer, URL unshorten (redirect chains).
 
-**Crypto & Misc**
-- **JWT inspector**, **Codec box** (base64/url encode/decode), **Password generator**, **SSH key audit**, **Subnet calculator**, **Integrity baseline** (hash inventory + diff). :contentReference[oaicite:5]{index=5}
+**Crypto & Miscellaneous**
+- JWT inspector, encoding/decoding toolbox (base64, URL), password generator, SSH key auditor, subnet calculator, integrity baseline (hashing + diff).
 
-**PDF / Files**
-- **PDF metadata reader** (pypdf → pdfminer fallback), **File Magic + strings** (libmagic & printable strings). :contentReference[oaicite:6]{index=6} :contentReference[oaicite:7]{index=7}
+**PDF / File Analysis**
+- PDF metadata reader (via `pypdf` or fallback to `pdfminer`), file magic detection, and printable string extraction.
 
 **Images / QR / EXIF**
-- **Image Metadata Pro** (EXIF + GPS with decimal lat/lon), **EXIF scrub (rewrite clean copy)**, **Image duplicate finder (perceptual hash)**, **QR decode**. :contentReference[oaicite:8]{index=8} :contentReference[oaicite:9]{index=9} :contentReference[oaicite:10]{index=10}
+- EXIF metadata viewer with GPS-to-decimal conversion, EXIF scrubber, image duplicate detector (perceptual hash), and QR code decoder.
 
 **Tokens & Secrets**
-- **Discord token analyzer + leak scan**, **Telegram bot token analyzer + deep-link builder**, **Secret scan (regex)** for common API keys. (All offline; redacts secrets.) :contentReference[oaicite:11]{index=11} :contentReference[oaicite:12]{index=12} :contentReference[oaicite:13]{index=13}
+- Discord token analyzer with leak-scanning, Telegram bot token processor (deep link builder), and regex-based API key scanning—all offline and secrets masked.
 
-**Phone OSINT**
-- Interactive and CLI **phone intelligence** (validity, E.164, carrier, region, TZ). :contentReference[oaicite:14]{index=14}
-
-The interactive menu shows all tools and short descriptions. :contentReference[oaicite:15]{index=15}
+**Phone Intelligence**
+- Phone number OSINT (validity, E.164 conversion, carrier, region, timezone), accessible via both CLI and interactive menu.
 
 ---
 
-## 🧰 Requirements
+##  Requirements
 
-Python packages (installed via the Makefile or setup script):
+Install these Python dependencies via the Makefile or `setup.py`:
 
 ```
 
@@ -66,84 +63,100 @@ python-whois, phonenumbers, Pillow, qrcode\[pil], pyzbar, piexif, imagehash,
 pypdf, pdfminer.six, zxcvbn, mmh3, python-magic, whois
 
 ````
-(See `requirements.txt` for the authoritative list.) :contentReference[oaicite:16]{index=16}
 
-Some features rely on system tools/libs (e.g., **tshark**, **tcpdump**, **ZBar**, **libmagic**). Use `setup.py` to install them where possible. :contentReference[oaicite:17]{index=17}
+Some features require system libraries (e.g., `tshark`, `tcpdump`, ZBar, libmagic). Use `setup.py` to install them when possible.
 
 ---
 
-## ⚡ Quick Start
+##  Quick Start
 
-### 1) Create & activate a virtual environment
-```bash
-python3 -m venv .venv
-source .venv/bin/activate       # Linux/macOS
-# or on Windows PowerShell:
-# .venv\Scripts\Activate.ps1
+1. **Create & activate virtual environment**
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate       # Linux/macOS
+   # or on Windows PowerShell:
+   # .venv\Scripts\Activate.ps1
 ````
 
-### 2) Install Python deps
+2. **Install dependencies**
+
+   ```bash
+   make install
+   # or, skip venv:
+   make install-user
+   ```
+
+3. **Run**
+
+   ```bash
+   make run               # launch interactive menu
+   # Or via CLI:
+   python main.py --help
+   python main.py scan 127.0.0.1 --ports 1-1024 --timeout 0.5 --out scan.json
+   ```
+
+(See `HELPME.txt` for more examples.)
+
+---
+
+## Optional Setup Helper
+
+Run `setup.py` to install Python packages and system tools (best-effort, cross-platform), show ASCII art, and verify imports.
+
+**Flags:**
+
+* `--no-open` – skip opening links
+* `--no-sys` – skip system package installation
+* `--no-py` – skip Python package installation
+* `--no-verify` – skip import checks
+
+Example:
 
 ```bash
-make install
-# or without venv:
-make install-user
+python setup.py --no-open
 ```
 
-### 3) Run
+---
 
-```bash
-make run                    # interactive menu
-# or CLI:
-python main.py --help
-python main.py scan 127.0.0.1 --ports 1-1024 --timeout 0.5 --out scan.json
-```
+## CLI Highlights (via Typer)
 
-(These examples also live in `HELPME.txt`.)&#x20;
+* `menu`: Launch the interactive TUI
+* `scan`: Async port scanner
+
+  ```bash
+  python main.py scan <host> --ports <range> --timeout <sec> --out <file>
+  ```
+* `phone`: Phone number OSINT
+
+  ```bash
+  python main.py phone <number>
+  ```
 
 ---
 
-## 🛠 Optional: Cross-platform setup helper
+## Legal & Ethics
 
-`setup.py` can (best-effort) install **system packages** and **pip deps** on Linux/macOS/Windows. It also shows an ASCII banner and verifies imports.
-
-**Flags:** `--no-open` (skip opening links), `--no-sys`, `--no-py`, `--no-verify`.
-**Example:** `python setup.py --no-open` &#x20;
+Use only on targets you have permission to test. First-run confirmation is stored in `~/.hackerlife/config.json`.
 
 ---
 
-## 🧭 CLI Highlights
+## Contributing
 
-The app exposes a Typer CLI in addition to the menu:
-
-* `menu` – launch interactive TUI
-* `scan` – async port scanner with JSON output (`--ports`, `--timeout`, `--out`)
-* `phone` – phone intelligence (region default, E.164, carrier, tz)&#x20;
-
----
-
-## ⚠️ Legal / Ethics
-
-Use these tools **only** on systems you own or have **explicit permission** to test. A first-run gate records your acknowledgment in `~/.hackerlife/config.json`.&#x20;
-
----
-
-## 🤝 Contributing
-
-1. Fork this repo
-2. Create a feature branch (`git checkout -b feature/foo`)
-3. Commit (`git commit -m "Add foo"`)
-4. Push (`git push origin feature/foo`)
+1. Fork the repo
+2. Create a branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m "Add your feature"`)
+4. Push (`git push origin feature/your-feature`)
 5. Open a Pull Request
 
 ---
 
-## 📜 License
+## License
 
-MIT — free to use, modify, and distribute.
+MIT — free to use, modify, and share.
 
 ```
 
-
-
-# MADE BY ARAD GOL# cyber
+---
+## ✍️ Author
+Made by **Arad Golbaghi**  
