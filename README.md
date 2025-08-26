@@ -1,15 +1,14 @@
 ```
-# ​ CYBER — Hacker-Life Lab
+# 🔐 CYBER — Hacker-Life Lab
 
 > A Python toolkit for recon, network scanning/sniffing, HTTP/OSINT helpers, PDF + image forensics, QR/EXIF tools, token analyzers, and more.  
 > **Cross-platform**: Linux, macOS, Windows.
 
 ---
 
-##  Project Layout
+## Project Layout
 
-```
-
+```text
 CYBER/
 ├── .venv/             # optional virtual environment
 ├── .vscode/           # VS Code settings
@@ -19,8 +18,6 @@ CYBER/
 ├── README.md          # this file
 ├── requirements.txt   # Python dependencies
 └── setup.py           # cross-platform system+pip setup helper
-
-```
 
 ---
 
