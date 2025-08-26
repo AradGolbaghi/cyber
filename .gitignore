@@ -18,3 +18,5 @@ ENV/
 # OS files
 .DS_Store
 Thumbs.db
+.venv/
+.vscode/
