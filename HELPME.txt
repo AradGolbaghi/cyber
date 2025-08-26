@@ -1,0 +1,11 @@
+python main.py --help        # show CLI help
+python main.py menu          # launch interactive menu
+python main.py scan --help   # see scan options
+python main.py scan 127.0.0.1 --ports 1-1024 --timeout 0.5 --out scan.json
+
+OR:
+
+python3 main.py --help        # show CLI help
+python3 main.py menu          # launch interactive menu
+python3 main.py scan --help   # see scan options
+python3 main.py scan 127.0.0.1 --ports 1-1024 --timeout 0.5 --out scan.json
