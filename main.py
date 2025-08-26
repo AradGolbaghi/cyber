@@ -2365,10 +2365,7 @@ try:
     from pyzbar.pyzbar import decode as _qr_decode
     from pyzbar import pyzbar as _pyzbar
     from PIL import Image
-    print("✅ pyzbar + Pillow available")
-    print("pyzbar version:", getattr(pyzbar, "__version__", "?"))
 except Exception as e:
-    print("❌ Import failed:", e)
     _qr_decode = None
 
 def tool_qr_decode():
